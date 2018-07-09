@@ -1,4 +1,5 @@
 # coding: utf-8
+# 학습용어 개념사전, 초등수학 개념사전 대응
 
 
 from requests_html import HTMLSession
@@ -32,6 +33,7 @@ def get_concept_list(r, subject='수학'):
 
 
 if __name__ == '__main__':
+    # 학습용어 개념사전
     url = 'https://terms.naver.com/list.nhn?cid=43672&categoryId=43672&so=st4.asc'
 
     session = HTMLSession()
@@ -42,7 +44,14 @@ if __name__ == '__main__':
 
     print(book_info)
     print(concept_list)
+    
+    print()
 
 
+    # 초등수학 개념사전
+    url = 'https://terms.naver.com/list.nhn?cid=42426&categoryId=42426'
 
+    response = session.get(url)
 
+    book_info = get_book_info(response)
+    concept_list = get_concept_list(response, subject=None)
