@@ -46,8 +46,7 @@ if __name__ == '__main__':
     urls = [
         'https://terms.naver.com/list.nhn?cid=43672&categoryId=43672&so=st4.asc',
         'https://terms.naver.com/list.nhn?cid=42426&categoryId=42426',
-        'https://terms.naver.com/list.nhn?cid=42427&categoryId=42427', 
-        'https://terms.naver.com/list.nhn?cid=43669&categoryId=43669&so=st4.asc'
+        'https://terms.naver.com/list.nhn?categoryId=43669&so=st4.asc',
     ]
     
     for idx, url in enumerate(urls):
