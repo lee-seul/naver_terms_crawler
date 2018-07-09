@@ -1,5 +1,5 @@
 # coding: utf-8
-# 학습용어 개념사전, 초등수학 개념사전 대응
+# 학습용어 개념사전, 초등수학 개념사전, 통합논술 개념어 사전 대응(아마 사전에는 다 대응)
 
 
 from requests_html import HTMLSession
