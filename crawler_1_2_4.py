@@ -20,9 +20,10 @@ def get_concept_list(r, subject='수학'):
     base = r.html.find('.contents_sub')
 
     for idx, sub in enumerate(base):
-        temp = sub.find('.contents_item')[0].text
-        raw_subject = temp.split()[0]
-        if raw_subject == subject or not subject:
+        raw_subject = sub.find('.contents_item')[0].text
+        raw_subject = raw_subject.replace(' 더보기', '')
+
+        if raw_subject.split()[0] == subject or not subject:
             raw_list = sub.find('ul')
             concept_list = raw_list[0].text
             data[raw_subject] = concept_list.split('\n')
@@ -55,3 +56,24 @@ if __name__ == '__main__':
 
     book_info = get_book_info(response)
     concept_list = get_concept_list(response, subject=None)
+
+    print(book_info)
+    print(concept_list)
+
+    print()
+
+    url = 'https://terms.naver.com/list.nhn?cid=43669&categoryId=43669&so=st4.asc' 
+
+    response = session.get(url)
+
+    book_info = get_book_info(response)
+    concept_list = get_concept_list(response, subject=None)
+
+    print(book_info)
+    print(concept_list)
+    
+    print()
+
+
+
+
