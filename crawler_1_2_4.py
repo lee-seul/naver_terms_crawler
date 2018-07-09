@@ -31,49 +31,30 @@ def get_concept_list(r, subject='수학'):
     return data
 
 
-
-
-if __name__ == '__main__':
-    # 학습용어 개념사전
-    url = 'https://terms.naver.com/list.nhn?cid=43672&categoryId=43672&so=st4.asc'
-
+def print_data(url, subject=None): 
     session = HTMLSession()
     response = session.get(url)
 
     book_info = get_book_info(response)
-    concept_list = get_concept_list(response)
+    concept_list = get_concept_list(response, subject)
 
     print(book_info)
     print(concept_list)
+
+
+if __name__ == '__main__':
+    urls = [
+        'https://terms.naver.com/list.nhn?cid=43672&categoryId=43672&so=st4.asc',
+        'https://terms.naver.com/list.nhn?cid=42426&categoryId=42426',
+        'https://terms.naver.com/list.nhn?cid=42427&categoryId=42427', 
+        'https://terms.naver.com/list.nhn?cid=43669&categoryId=43669&so=st4.asc'
+    ]
     
-    print()
+    for idx, url in enumerate(urls):
+        subject = None
+        if not idx:
+            subject = '수학'
 
-
-    # 초등수학 개념사전
-    url = 'https://terms.naver.com/list.nhn?cid=42426&categoryId=42426'
-
-    response = session.get(url)
-
-    book_info = get_book_info(response)
-    concept_list = get_concept_list(response, subject=None)
-
-    print(book_info)
-    print(concept_list)
-
-    print()
-
-    url = 'https://terms.naver.com/list.nhn?cid=43669&categoryId=43669&so=st4.asc' 
-
-    response = session.get(url)
-
-    book_info = get_book_info(response)
-    concept_list = get_concept_list(response, subject=None)
-
-    print(book_info)
-    print(concept_list)
-    
-    print()
-
-
+        print_data(url, subject)
 
 
