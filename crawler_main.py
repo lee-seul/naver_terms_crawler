@@ -25,8 +25,15 @@ def get_concept_list(r, subject='수학'):
 
         if raw_subject.split()[0] == subject or not subject:
             raw_list = sub.find('ul')
-            concept_list = raw_list[0].text
-            data[raw_subject] = concept_list.split('\n')
+            concept_list = raw_list[0].text.split('\n')
+            concept_urls = raw_list[0].find('a')
+            
+            data[raw_subject] = []
+            for idx in range(len(concept_urls)):
+                concept = {}
+                concept['name'] = concept_list[idx]
+                concept['url'] = list(concept_urls[idx].absolute_links)[0]
+                data[raw_subject].append(concept)
         
     return data
 
